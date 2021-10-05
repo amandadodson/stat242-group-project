@@ -1,0 +1,60 @@
+---
+title: "Data Visualization"
+author: "Amanda Dodson"
+date: "10/30/21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(openintro)
+library(ggthemes)
+```
+
+### Problem One:
+Re-create your histogram from lab 1 using a different color for the bars and a theme from the ggthemes package.
+
+```{r}
+ggplot(gpa_study_hours, aes(gpa))+
+  geom_histogram(binwidth = 0.25, color = "grey60",
+                 fill = "lightblue", size = 1.25)+
+  labs(
+    title = "GPA of Intro Stats",
+    subtitle = "193 students",
+    x = "GPA",
+    y = "Number of Students",
+    caption = "Source: 2012, Private US University"
+  )+
+  theme_update()
+```
+
+### Problem Two: 
+Create a custom histogram using one of the variables in the `diamonds` data set. It should include one (or more): 
+
+*change to text
+
+*change to panel
+
+*change to plot
+
+*change to histogram/boxplot
+
+```{r}
+ggplot(diamonds, aes(price))+
+  geom_histogram(binwidth = 1750, color = "#69BE28",
+                 fill = "#002244", size = 1)+
+  labs(
+    x = "Price",
+    y = "Number of Diamonds"
+  )+
+  theme(
+    text = element_text(size = 14, face = "italic"),
+    plot.background = element_rect(fill = "#A5ACAF"),
+    panel.background = element_rect(fill = "#A5ACAF"),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.y = element_line(color = "white"),
+    panel.grid.major.y = element_line(color = "white", size = 1)
+  )
+```
